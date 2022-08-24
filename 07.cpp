@@ -12,17 +12,39 @@ int n, sx, sy, ex, ey;
 int dx[] = {0, 1, 0, -1};
 int dy[] = {1, 0, -1, 0};
 
+inline int read()
+{
+	int f = 1;
+	int x = 0;
+	char ch = getchar();
+	while (!isdigit(ch) && ch != '-')
+	{
+		ch = getchar();
+	}
+	if (ch == '-')
+		f = -1, ch = getchar();
+	while (isdigit(ch))
+	{
+		x = x * 10 + ch - '0';
+		ch = getchar();
+	}
+	return f * x;
+}
+
 int main()
 {
-	cin >> n;
+	n = read();
 	for (int i = 1; i <= n; i++)
 		for (int j = 1; j <= n; j++)
 		{
-			cin >> space[i][j];
+			space[i][j] = read();
 			if (space[i][j] == 1)
 				space[i][j] = -1;
 		}
-	cin >> sx >> sy >> ex >> ey;
+	sx = read();
+	sy = read();
+	ex = read();
+	ey = read();
 	q.push({0, sx, sy, 1});
 	vis[sx][sy] = 1;
 	q.push({0, ex, ey, 2});
